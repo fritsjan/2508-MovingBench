@@ -1,0 +1,40 @@
+{
+  "version": 1,
+  "author": "Frits Jan van Kempen",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "board-aitewinrobot-esp32c3-supermini",
+      "id": "esp32-c3",
+      "top": -182.7,
+      "left": -147.78,
+      "attrs": { "serialInterface": "USB_SERIAL_JTAG" }
+    },
+    {
+      "type": "wokwi-pushbutton-6mm",
+      "id": "btn1",
+      "top": -155.8,
+      "left": -67.2,
+      "attrs": { "color": "green", "xray": "1" }
+    },
+    { "type": "wokwi-neopixel", "id": "rgb1", "top": -147.5, "left": -20.2, "attrs": {} },
+    { "type": "wokwi-neopixel", "id": "rgb2", "top": -195.5, "left": -20.2, "attrs": {} },
+    {
+      "type": "wokwi-text",
+      "id": "text1",
+      "top": -182.4,
+      "left": 38.4,
+      "attrs": { "text": "Single click -> bottom led\nDouble click -> top led" }
+    }
+  ],
+  "connections": [
+    [ "rgb1:DOUT", "rgb2:DIN", "blue", [ "h-9.6", "v-29.7", "h38.4", "v-28.8" ] ],
+    [ "esp:2", "rgb1:DIN", "green", [ "h-19.2", "v-9.6" ] ],
+    [ "esp:3", "btn1:1.r", "green", [ "h-28.8", "v-9.6" ] ],
+    [ "esp:GND.2", "btn1:2.r", "black", [ "h0" ] ],
+    [ "esp32-c3:GND", "btn1:1.l", "black", [ "h0" ] ],
+    [ "esp32-c3:3", "btn1:2.l", "green", [ "h0" ] ],
+    [ "esp32-c3:2", "rgb1:DIN", "green", [ "h103.85", "v-21.54", "h-9.6" ] ]
+  ],
+  "dependencies": {}
+}
